@@ -42,7 +42,8 @@ Silakan pilih menu:
     print(
         Panel(
             layout_internal,
-            title=f"[bold]{NAMA_PROGRAM}[/bold] [dim]{VERSI_PROGRAM}[/dim]",
+            title=f"[bold]{NAMA_PROGRAM}[/bold]",  # <-- Hapus versi dari sini
+            subtitle=f"[bold]{VERSI_PROGRAM} | (c) 2025 Feby[/bold]",  # <-- TAMBAHKAN BARIS INI
             border_style="blue",
             padding=(1, 2),
         )
