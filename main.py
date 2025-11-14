@@ -5,6 +5,7 @@ from rich import print
 import config
 import logic
 import ui
+from ui import console
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
     ui.tampilkan_header()
 
     print("---------------------------------")
-    pilihan_menu = input("Masukkan nomor pilihan: ")
+    pilihan_menu = ui.console.input("Masukkan nomor pilihan: ")
 
     if pilihan_menu == "1":
         while True:
@@ -22,7 +23,7 @@ def main():
                     print(f" [cyan]{i}[/cyan]. {col}")
                 print("---------------------------------")
 
-                pilihan_str = input("Masukkan nomor pilihan (misal: 1): ")
+                pilihan_str = ui.console.input("Masukkan nomor pilihan (misal: 1): ")
                 pilihan_int = int(pilihan_str)
                 if not (1 <= pilihan_int <= len(available_columns)):
                     raise IndexError("Pilihan di luar jangkauan")
@@ -30,7 +31,9 @@ def main():
                 kolom_pencarian = available_columns[pilihan_int - 1]
                 print(f"Anda memilih: [bold green]{kolom_pencarian}[/bold green]")
 
-                nilai_input_str = input(f"Masukkan nilai untuk {kolom_pencarian}: ")
+                nilai_input_str = ui.console.input(
+                    f"Masukkan nilai untuk {kolom_pencarian}: "
+                )
                 nilai_input = float(nilai_input_str)
 
             except (ValueError, IndexError):
@@ -44,11 +47,12 @@ def main():
 
                 if bawah[kolom_pencarian] != atas[kolom_pencarian]:
                     print("\n" + "-" * 20)
-                    pilihan_interp = input(
+                    pilihan_interp = ui.console.input(
                         "[bold yellow]Apakah Anda ingin melakukan interpolasi? (y/n): [/bold yellow]"
                     )
 
-                    if pilihan_interp.lower() == "y":
+                    while pilihan_interp.lower() == "y":
+                        y_col = None
                         try:
                             print(
                                 "\n[bold]Pilih kolom target untuk interpolasi:[/bold]"
@@ -60,7 +64,9 @@ def main():
                                     print(f" [cyan]{i}[/cyan]. {col}")
                             print("---------------------------------")
 
-                            pilihan_y_str = input("Masukkan nomor kolom target: ")
+                            pilihan_y_str = ui.console.input(
+                                "Masukkan nomor kolom target: "
+                            )
                             pilihan_y_int = int(pilihan_y_str)
                             if not (1 <= pilihan_y_int <= len(available_columns)):
                                 raise IndexError("Pilihan di luar jangkauan")
@@ -72,6 +78,13 @@ def main():
                                 )
                                 continue
 
+                        except (ValueError, IndexError):
+                            print(
+                                "\n[bold red]Error: Pilihan tidak valid. Harap masukkan nomor dari daftar.[/bold red]"
+                            )
+                            continue
+
+                        try:
                             x1 = float(bawah[kolom_pencarian])
                             x2 = float(atas[kolom_pencarian])
                             y1 = float(bawah[y_col])
@@ -92,11 +105,18 @@ def main():
                             print(
                                 f"\n[bold red]Error: Kolom '{y_col}' berisi data non-numerik.[/bold red]"
                             )
-                        except (IndexError, KeyError):
-                            print("\n[bold red]Error: Pilihan tidak valid.[/bold red]")
+                        except KeyError:
+                            print(
+                                "\n[bold red]Error: Pilihan tidak valid (KeyError).[/bold red]"
+                            )
+
+                        print("\n" + "-" * 20)
+                        pilihan_interp = ui.console.input(
+                            "[bold yellow]Apakah Anda ingin interpolasi kolom LAIN? (y/n): [/bold yellow]"
+                        )
 
             print("\n" + "=" * 40)
-            pilihan_lanjut = input(
+            pilihan_lanjut = ui.console.input(
                 "[bold yellow]Apakah Anda ingin melakukan pencarian lagi? (y/n): [/bold yellow]"
             )
             if pilihan_lanjut.lower() != "y":

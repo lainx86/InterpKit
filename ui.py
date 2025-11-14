@@ -9,21 +9,22 @@ from config import NAMA_PROGRAM, VERSI_PROGRAM
 
 console = Console()
 
+
 def tampilkan_header():
     console.clear()
     ascii_logo = f"""
 [bold deep_sky_blue1]
-/$$$$$$             /$$                                   /$$   /$$ /$$   /$$    
-|_  $$_/            | $$                                  | $$  /$$/|__/  | $$    
- | $$   /$$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$   /$$$$$$ | $$ /$$/  /$$ /$$$$$$  
- | $$  | $$__  $$|_  $$_/   /$$__  $$ /$$__  $$ /$$__  $$| $$$$$/  | $$|_  $$_/  
- | $$  | $$  \ $$  | $$    | $$$$$$$$| $$  \__/| $$  \ $$| $$  $$  | $$  | $$    
+/$$$$$$             /$$                                   /$$   /$$ /$$   /$$
+|_ $$_/            | $$                                  | $$  /$$/ |__/ | $$
+ | $$   /$$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$   /$$$$$$ | $$ /$$/  /$$ /$$$$$$
+ | $$  | $$__  $$|_  $$_/   /$$__  $$ /$$__  $$ /$$__  $$| $$$$$/  | $$|_  $$_/
+ | $$  | $$  \ $$  | $$    | $$$$$$$$| $$  \__/| $$  \ $$| $$  $$  | $$  | $$
  | $$  | $$  | $$  | $$ /$$| $$_____/| $$      | $$  | $$| $$\  $$ | $$  | $$ /$$
 /$$$$$$| $$  | $$  |  $$$$/|  $$$$$$$| $$      | $$$$$$$/| $$ \  $$| $$  |  $$$$/
-|______/|__/  |__/   \___/   \_______/|__/      | $$____/ |__/  \__/|__/   \___/  
-                                               | $$                              
-                                               | $$                              
-                                               |__/                              
+|______/|__/  |__/   \___/   \_______/|__/      | $$____/ |__/  \__/|__/   \___/
+                                               | $$
+                                               | $$
+                                               |__/
 [/bold deep_sky_blue1]
     """
 
@@ -47,6 +48,7 @@ Silakan pilih menu:
         )
     )
 
+
 def buat_tabel_hasil(data_series) -> Table:
     tabel = Table(show_header=False, border_style="dim", box=None, padding=(0, 1))
     tabel.add_column("Atribut", style="dim cyan", width=12)
@@ -59,6 +61,7 @@ def buat_tabel_hasil(data_series) -> Table:
             value_str = str(value)
         tabel.add_row(str(index), value_str)
     return tabel
+
 
 def tampilkan_hasil_pencarian(kolom_pencarian, bawah, atas):
     if bawah[kolom_pencarian] == atas[kolom_pencarian]:
@@ -96,13 +99,24 @@ def tampilkan_hasil_pencarian(kolom_pencarian, bawah, atas):
         )
         print(hasil_layout)
 
+
 def tampilkan_hasil_interpolasi(y_col, y_target, x_target, x1, x2, y1, y2):
-    hasil_text = Text(justify="center")
-    hasil_text.append(f"Interpolasi untuk [bold]{y_col}[/bold]\n\n")
-    hasil_text.append(f"X Target : {x_target}\n")
-    hasil_text.append(f"Y Hasil  : [bold green]{y_target:.6f}[/bold green]\n\n")
-    hasil_text.append(f"[dim]Berdasarkan:\n")
-    hasil_text.append(f" (x1: {x1}, y1: {y1})\n")
-    hasil_text.append(f" (x2: {x2}, y2: {y2})[/dim]")
-    
-    print(Panel(hasil_text, title="[bold green]HASIL INTERPOLASI LINIER[/bold green]", border_style="green"))
+    markup_string = f"""
+Interpolasi untuk [bold]{y_col}[/bold]
+
+X Target : {x_target}
+Y Hasil  : [bold green]{y_target:.6f}[/bold green]
+
+[dim]Berdasarkan:
+ (x1: {x1}, y1: {y1})
+ (x2: {x2}, y2: {y2})[/dim]
+"""
+    hasil_text = Text.from_markup(markup_string, justify="center")
+
+    print(
+        Panel(
+            hasil_text,
+            title="[bold green]HASIL INTERPOLASI LINIER[/bold green]",
+            border_style="green",
+        )
+    )
