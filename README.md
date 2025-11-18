@@ -13,4 +13,9 @@ Program ini dibuat untuk mengatasi proses manual yang lambat dan rawan kesalahan
   * **Kalkulator Interpolasi:** Otomatis menghitung interpolasi linier setelah data batas ditemukan.
   * **Modular:** Kode dipecah menjadi file `logic.py`, `ui.py`, dan `config.py` agar mudah dikelola dan dikembangkan.
 
+## How to Install (windows).
+'''
+winget install interpkit
+'''
+
 
