@@ -8,10 +8,9 @@ Program ini dibuat untuk mengatasi proses manual yang lambat dan rawan kesalahan
 
 ## Fitur Utama
 
-  * **Tampilan CLI Modern:** Antarmuka interaktif yang bersih dan fungsional, ditenagai oleh *library* `rich`.
+  * **Tampilan CLI Modern:** Antarmuka interaktif yang bersih dan fungsional.
   * **Pencarian Cepat:** Secara instan menemukan baris data batas atas dan batas bawah dari nilai input Anda.
   * **Kalkulator Interpolasi:** Otomatis menghitung interpolasi linier setelah data batas ditemukan.
-  * **Modular:** Kode dipecah menjadi file `logic.py`, `ui.py`, dan `config.py` agar mudah dikelola dan dikembangkan.
 
 ## How to Install (windows).
 ```bash
