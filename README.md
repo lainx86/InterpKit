@@ -14,7 +14,7 @@ Program ini dibuat untuk mengatasi proses manual yang lambat dan rawan kesalahan
 
 ## How to Install (windows).
 ```bash
-winget install interpkit
+winget install lainx86.InterpKit
 ```
 
 
