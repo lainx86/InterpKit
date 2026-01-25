@@ -1,16 +1,16 @@
 # InterpKit v1.1
 
-`InterpKit` adalah sebuah alat bantu CLI (Command Line Interface) yang dirancang untuk mempercepat dan mempermudah pencarian data dari tabel rekayasa, khususnya tabel fungsi `d/L` untuk pertambahan nilai `d/L0`.
+`InterpKit` is a CLI (Command Line Interface) helper tool designed to speed up and simplify data lookup from engineering tables, especially the `d/L` function table for increments of `d/L`0.
 ![Demo InterpKit CLI](assets/interpkit.png)
-Program ini dibuat untuk mengatasi proses manual yang lambat dan rawan kesalahan dalam mencari nilai batas atas dan batas bawah dari tabel, yang kemudian digunakan untuk perhitungan interpolasi linier.
+This program was created to overcome the slow and error-prone manual process of finding upper and lower boundary values from tables, which are then used for linear interpolation calculations.
 
 -----
 
-## Fitur Utama
+## Main Features
 
-  * **Tampilan CLI Modern:** Antarmuka interaktif yang bersih dan fungsional.
-  * **Pencarian Cepat:** Secara instan menemukan baris data batas atas dan batas bawah dari nilai input Anda.
-  * **Kalkulator Interpolasi:** Otomatis menghitung interpolasi linier setelah data batas ditemukan.
+  * **Modern CLI Interface:** A clean and functional interactive interface.
+  * **Fast Search:** Instantly finds the upper and lower boundary data rows based on your input value.
+  * **Interpolation Calculator:** Automatically performs linear interpolation once the boundary data is found.
 
 ## How to Install (windows).
 ```bash
