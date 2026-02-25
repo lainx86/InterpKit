@@ -2,3 +2,13 @@ __pycache__
 /dist/
 /build/
 *.spec
+
+# C++ build artifacts
+cmake-build-*/
+build/
+build-win/
+*.o
+*.exe
+.cache/
+compile_commands.json
+mingw_env.sh
