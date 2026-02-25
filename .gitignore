@@ -7,7 +7,7 @@ __pycache__
 cmake-build-*/
 build/
 build-win/
-releases/
+release/
 *.o
 *.exe
 .cache/
