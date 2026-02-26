@@ -52,6 +52,10 @@ target_link_libraries(interpkit PRIVATE
     ftxui::component
 )
 
+if(MINGW)
+    target_link_options(interpkit PRIVATE -static)
+endif()
+
 # ──────────────────────────────────────────────
 # Embed data_tabel.xlsx into the binary
 # ──────────────────────────────────────────────
