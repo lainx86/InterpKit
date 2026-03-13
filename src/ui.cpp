@@ -25,10 +25,17 @@ static const std::string BLUE      = "\033[1;34m";
 static const std::string CYAN      = "\033[36m";
 static const std::string DEEP_SKY  = "\033[38;5;39m";
 
-static std::string formatDouble(double val, int precision = 4) {
+static std::string formatDouble(double val, int precision = 10) {
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(precision) << val;
-    return oss.str();
+    std::string s = oss.str();
+    // Strip trailing zeros after decimal point, but keep at least one digit after '.'
+    if (s.find('.') != std::string::npos) {
+        auto last = s.find_last_not_of('0');
+        if (last != std::string::npos && s[last] == '.') last++; // keep "1.0" not "1."
+        s = s.substr(0, last + 1);
+    }
+    return s;
 }
 
 // Compute terminal display width of a UTF-8 string,
