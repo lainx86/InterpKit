@@ -25,14 +25,20 @@ FetchContent_Declare(
 )
 
 # Disable unnecessary targets for dependencies to speed up build and silence warnings
+set(FTXUI_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
 set(FTXUI_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(FTXUI_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(FTXUI_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 
 set(OPENXLSX_BUILD_SAMPLES OFF CACHE BOOL "" FORCE)
 set(OPENXLSX_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-
+# OpenXLSX doesn't have an option to disable install easily without modifying its CMakeLists,
+# but we can set EXCLUDE_FROM_ALL in FetchContent MakeAvailable if needed:
 FetchContent_MakeAvailable(OpenXLSX ftxui)
+
+# After making them available, exclude their install targets
+set_property(DIRECTORY ${ftxui_SOURCE_DIR} PROPERTY EXCLUDE_FROM_ALL YES)
+set_property(DIRECTORY ${OpenXLSX_SOURCE_DIR} PROPERTY EXCLUDE_FROM_ALL YES)
 
 # ──────────────────────────────────────────────
 # Executable
@@ -77,3 +83,14 @@ add_custom_target(embed_data DEPENDS ${EMBED_OUTPUT})
 add_dependencies(interpkit embed_data)
 
 target_include_directories(interpkit PRIVATE ${CMAKE_BINARY_DIR}/generated)
+
+# ──────────────────────────────────────────────
+# Installation Rules (For Linux Package Managers / AUR)
+# ──────────────────────────────────────────────
+# Prevent standard libraries in Windows cross-compilation from being installed system-wide
+if(NOT MINGW)
+    include(GNUInstallDirs)
+    install(TARGETS interpkit
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )
+endif()
