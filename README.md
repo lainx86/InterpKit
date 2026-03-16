@@ -19,7 +19,17 @@ As of **v2.0.0**, InterpKit has been completely rewritten in **C++** (previously
 
 ## Installation & Usage
 
-InterpKit v2.0.0 provides pre-compiled standalone binaries for both Windows and Linux. 
+InterpKit v2.0.0 provides pre-compiled standalone binaries for both Windows and Linux, as well as an official package for Arch Linux users.
+
+### Arch Linux (AUR)
+
+If you are using Arch Linux, Manjaro, EndeavourOS, or any Arch-based distribution, you can install InterpKit directly from the Arch User Repository (AUR) using an AUR helper like `yay` or `paru`:
+
+```bash
+yay -S interpkit
+```
+
+### Windows & Other Linux Distros
 
 1. Go to the [Releases](../../releases/latest) page on GitHub.
 2. Download the appropriate executable for your operating system:
