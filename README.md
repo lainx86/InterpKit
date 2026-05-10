@@ -29,13 +29,25 @@ If you are using Arch Linux, Manjaro, EndeavourOS, or any Arch-based distributio
 yay -S interpkit
 ```
 
-### Windows & Other Linux Distros
+### Windows
+#### First Option (Via Winget)
+simply run this in your windows terminal:
+```bash
+winget install lainx86.InterpKit
+```
 
+#### Second Option
 1. Go to the [Releases](../../releases/latest) page on GitHub.
 2. Download the appropriate executable for your operating system:
    - **Windows:** Download `interpkit.exe`
    - **Linux:** Download `interpkit`
 3. Just double click or run the executable directly from your terminal! No Python, libraries, or external files are required.
+
+### Other Linux Distros
+1. Go to the [Releases](../../releases/latest) page on GitHub.
+2. Download the appropriate executable for your operating system:
+   - **Linux:** Download `interpkit`
+3. Just double click or run the executable directly from your terminal
 
 ## Building from Source
 
