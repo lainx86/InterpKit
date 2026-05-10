@@ -30,13 +30,13 @@ yay -S interpkit
 ```
 
 ### Windows
-#### First Option (Via Winget)
+#### -First Option (Via Winget)
 simply run this in your windows terminal:
 ```bash
 winget install lainx86.InterpKit
 ```
 
-#### Second Option
+#### -Second Option
 1. Go to the [Releases](../../releases/latest) page on GitHub.
 2. Download the appropriate executable for your operating system:
    - **Windows:** Download `interpkit.exe`
