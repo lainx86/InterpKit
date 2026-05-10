@@ -4,7 +4,7 @@
 
 ![Demo InterpKit CLI](assets/interpkit.png)
 
-This program was created to overcome the slow and error-prone manual process of finding upper and lower boundary values from tables, which are then used for linear interpolation calculations.
+This program was created to overcome the slow and error-prone manual process of finding upper and lower boundary values from tables (Usually, in my class, students search for data manually from books), which are then used for linear interpolation calculations. (I moved the data from the book to Excel manually, btw.)
 
 As of **v2.0.0**, InterpKit has been completely rewritten in **C++** (previously Python), making it significantly faster and available as a truly standalone, cross-platform executable with no runtime dependencies.
 
