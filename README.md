@@ -40,7 +40,6 @@ winget install lainx86.InterpKit
 1. Go to the [Releases](../../releases/latest) page on GitHub.
 2. Download the appropriate executable for your operating system:
    - **Windows:** Download `interpkit.exe`
-   - **Linux:** Download `interpkit`
 3. Just double click or run the executable directly from your terminal! No Python, libraries, or external files are required.
 
 ### Other Linux Distros
